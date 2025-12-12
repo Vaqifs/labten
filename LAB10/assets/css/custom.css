@@ -1,0 +1,221 @@
+/* ============================
+   Base styles
+   ============================ */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Layout sections */
+
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.site-header {
+  background: #0f172a;
+  color: #e5e7eb;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+.site-nav {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: auto;
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: #9ca3af;
+  text-decoration: none;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.nav-link:hover {
+  color: #f9fafb;
+  background: rgba(55, 65, 81, 0.85);
+  transform: translateY(-1px);
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #111827;
+  color: #9ca3af;
+}
+
+/* Buttons & links */
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #f9fafb;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.45);
+}
+
+.link-underline {
+  position: relative;
+  color: #2563eb;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: 2px;
+  background: #93c5fd;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================
+   2 custom animations (@keyframes)
+   ============================ */
+
+/* 1) Fade in + slide up for sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* helper class to apply this animation */
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered sections */
+#features.fade-in-up {
+  animation-delay: 0.2s;
+}
+#contact.fade-in-up {
+  animation-delay: 0.4s;
+}
+
+/* 2) Fun wiggle on button hover */
+@keyframes wiggle {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(-2px) rotate(-1.5deg); }
+  50%  { transform: translateY(0); }
+  75%  { transform: translateY(-2px) rotate(1.5deg); }
+  100% { transform: translateY(0); }
+}
+
+/* apply on hover */
+.btn-wiggle:hover {
+  animation: wiggle 0.4s ease-in-out;
+}
+
+/* ============================
+   3) CSS-only loader (pulsing dots)
+   ============================ */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  z-index: 9999;
+  /* fade out after 2.5s */
+  animation: loaderFadeOut 1s ease-out 2.5s forwards;
+}
+
+.loader__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #60a5fa;
+  animation: dotPulse 0.8s ease-in-out infinite;
+}
+
+/* three dots pulsing with delay */
+.loader__dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.loader__dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* loader fades away (so page is visible) */
+@keyframes loaderFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ============================
+   4) Respect prefers-reduced-motion
+   ============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .loader {
+    animation: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}

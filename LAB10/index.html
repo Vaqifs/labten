@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAB – Animations</title>
+
+  <!-- main template stylesheet (bootstrap, etc.) -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- your custom overrides MUST be linked last -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+
+  <!-- CSS-only loader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__dot"></div>
+    <div class="loader__dot"></div>
+    <div class="loader__dot"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="nav-logo" href="#home">My Project</a>
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="section hero fade-in-up">
+      <h1>Hello World</h1>
+      <p>This hero section fades in from the bottom.</p>
+      <button class="btn btn-primary btn-wiggle">Hover me</button>
+    </section>
+
+    <section id="features" class="section fade-in-up">
+      <h2>Features</h2>
+      <p>Each section uses the same fade-in animation class.</p>
+    </section>
+
+    <section id="contact" class="section fade-in-up">
+      <h2>Contact</h2>
+      <p>Last section with the same animation.</p>
+      <a class="link-underline" href="#">Animated link hover</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 My Project</p>
+  </footer>
+
+</body>
+</html>
