@@ -24,7 +24,7 @@ body {
 }
 
 .site-nav {
-  max-width: 960px;
+   max-width: 960px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
@@ -219,3 +219,4 @@ body {
     visibility: visible;
   }
 }
+
